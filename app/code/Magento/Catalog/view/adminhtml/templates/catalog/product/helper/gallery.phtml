@@ -148,36 +148,38 @@ $formName = $block->getFormName();
                         </div>
                     </div>
 
-                    <div class="admin__field field-image-role">
-                        <label class="admin__field-label">
-                            <span><?= /* @escapeNotVerified */ __('Role') ?></span>
-                        </label>
-                        <div class="admin__field-control">
-                            <ul class="multiselect-alt">
-                                <?php
-                                foreach ($block->getMediaAttributes() as $attribute) :
-                                    ?>
-                                    <li class="item">
-                                        <label>
-                                            <input class="image-type"
-                                                   data-role="type-selector"
-                                                   data-form-part="<?= /* @escapeNotVerified */ $formName ?>"
-                                                   type="checkbox"
-                                                   value="<?php /* @escapeNotVerified */ echo $block->escapeHtml(
-                                                       $attribute->getAttributeCode()
-                                                   ) ?>"
-                                                />
-                                            <?php /* @escapeNotVerified */ echo $block->escapeHtml(
-                                                $attribute->getFrontendLabel()
-                                            ) ?>
-                                        </label>
-                                    </li>
-                                <?php
-                                endforeach;
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php if(count($block->getMediaAttributes()) > 0): ?>
+                      <div class="admin__field field-image-role">
+                          <label class="admin__field-label">
+                              <span><?= /* @escapeNotVerified */ __('Role') ?></span>
+                          </label>
+                          <div class="admin__field-control">
+                              <ul class="multiselect-alt">
+                                  <?php
+                                  foreach ($block->getMediaAttributes() as $attribute) :
+                                      ?>
+                                      <li class="item">
+                                          <label>
+                                              <input class="image-type"
+                                                     data-role="type-selector"
+                                                     data-form-part="<?= /* @escapeNotVerified */ $formName ?>"
+                                                     type="checkbox"
+                                                     value="<?php /* @escapeNotVerified */ echo $block->escapeHtml(
+                                                         $attribute->getAttributeCode()
+                                                     ) ?>"
+                                                  />
+                                              <?php /* @escapeNotVerified */ echo $block->escapeHtml(
+                                                  $attribute->getFrontendLabel()
+                                              ) ?>
+                                          </label>
+                                      </li>
+                                  <?php
+                                  endforeach;
+                                  ?>
+                              </ul>
+                          </div>
+                      </div>
+                    <?php endif; ?>
 
                     <div class="admin__field admin__field-inline field-image-size" data-role="size">
                         <label class="admin__field-label">
