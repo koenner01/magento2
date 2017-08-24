@@ -1,12 +1,16 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Checkout\Helper;
 
 use Magento\Checkout\Controller\Express\RedirectLoginInterface;
 
+/**
+ * Class \Magento\Checkout\Helper\ExpressRedirect
+ *
+ */
 class ExpressRedirect extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**

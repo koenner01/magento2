@@ -2,7 +2,7 @@
 /**
  * Interception config. Responsible for providing list of plugins configured for instance
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Interception\Config;
@@ -10,6 +10,10 @@ namespace Magento\Framework\Interception\Config;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Serialize\Serializer\Serialize;
 
+/**
+ * Class \Magento\Framework\Interception\Config\Config
+ *
+ */
 class Config implements \Magento\Framework\Interception\ConfigInterface
 {
     /**

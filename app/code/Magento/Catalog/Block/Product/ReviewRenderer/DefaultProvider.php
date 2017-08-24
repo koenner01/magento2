@@ -2,13 +2,17 @@
 /**
  * Default implementation of product review service provider
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Catalog\Block\Product\ReviewRenderer;
 
 use Magento\Catalog\Block\Product\ReviewRendererInterface;
 
+/**
+ * Class \Magento\Catalog\Block\Product\ReviewRenderer\DefaultProvider
+ *
+ */
 class DefaultProvider implements ReviewRendererInterface
 {
     /**

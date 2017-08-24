@@ -1,25 +1,27 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Config\Console\Command;
 
+use Magento\Config\Console\Command\ConfigShow\ValueProcessor;
+use Magento\Framework\App\Config\ConfigPathResolver;
 use Magento\Framework\App\Config\ConfigSourceInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\Config\ConfigPathResolver;
-use Magento\Framework\Exception\LocalizedException;
-use Symfony\Component\Console\Command\Command;
 use Magento\Framework\App\Scope\ValidatorInterface;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Magento\Framework\Console\Cli;
-use Magento\Config\Console\Command\ConfigShow\ValueProcessor;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Command provides possibility to show saved system configuration.
+ *
+ * @api
+ * @since 100.2.0
  */
 class ConfigShowCommand extends Command
 {
@@ -31,11 +33,7 @@ class ConfigShowCommand extends Command
     const INPUT_ARGUMENT_PATH = 'path';
     /**#@-*/
 
-    /**
-     * Scope validator.
-     *
-     * @var ValidatorInterface
-     */
+    /**#@-*/
     private $scopeValidator;
 
     /**
@@ -86,6 +84,7 @@ class ConfigShowCommand extends Command
      * @param ConfigPathResolver $pathResolver
      * @param ValueProcessor $valueProcessor
      * @internal param ScopeConfigInterface $appConfig
+     * @since 100.2.0
      */
     public function __construct(
         ValidatorInterface $scopeValidator,
@@ -102,6 +101,7 @@ class ConfigShowCommand extends Command
 
     /**
      * @inheritdoc
+     * @since 100.2.0
      */
     protected function configure()
     {
@@ -138,13 +138,14 @@ class ConfigShowCommand extends Command
      * or scope/scope-code doesn't pass validation.
      *
      * {@inheritdoc}
+     * @since 100.2.0
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
             $this->scope = $input->getOption(self::INPUT_OPTION_SCOPE);
             $this->scopeCode = $input->getOption(self::INPUT_OPTION_SCOPE_CODE);
-            $this->inputPath = $input->getArgument(self::INPUT_ARGUMENT_PATH);
+            $this->inputPath = trim($input->getArgument(self::INPUT_ARGUMENT_PATH), '/');
 
             $this->scopeValidator->isValid($this->scope, $this->scopeCode);
             $configPath = $this->pathResolver->resolve($this->inputPath, $this->scope, $this->scopeCode);

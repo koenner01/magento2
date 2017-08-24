@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -11,6 +11,10 @@
  */
 namespace Magento\Fedex\Model\Source;
 
+/**
+ * Class \Magento\Fedex\Model\Source\Method
+ *
+ */
 class Method extends \Magento\Fedex\Model\Source\Generic
 {
     /**

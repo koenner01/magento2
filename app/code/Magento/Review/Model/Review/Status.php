@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -12,6 +12,10 @@
  */
 namespace Magento\Review\Model\Review;
 
+/**
+ * Class \Magento\Review\Model\Review\Status
+ *
+ */
 class Status extends \Magento\Framework\Model\AbstractModel
 {
     /**

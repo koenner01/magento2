@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 /**
@@ -10,6 +10,10 @@
  */
 namespace Magento\Newsletter\Controller\Adminhtml;
 
+/**
+ * Class \Magento\Newsletter\Controller\Adminhtml\Template
+ *
+ */
 abstract class Template extends \Magento\Backend\App\Action
 {
     /**

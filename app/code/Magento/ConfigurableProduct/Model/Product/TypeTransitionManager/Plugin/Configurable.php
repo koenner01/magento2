@@ -2,7 +2,7 @@
 /**
  * Plugin for product type transition manager
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\ConfigurableProduct\Model\Product\TypeTransitionManager\Plugin;
@@ -10,6 +10,10 @@ namespace Magento\ConfigurableProduct\Model\Product\TypeTransitionManager\Plugin
 use Closure;
 use Magento\Framework\App\RequestInterface;
 
+/**
+ * Class \Magento\ConfigurableProduct\Model\Product\TypeTransitionManager\Plugin\Configurable
+ *
+ */
 class Configurable
 {
     /**

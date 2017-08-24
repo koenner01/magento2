@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -10,6 +10,10 @@ use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Catalog\Api\Data\ProductWebsiteLinkInterface;
 
+/**
+ * Class \Magento\Catalog\Model\ProductWebsiteLinkRepository
+ *
+ */
 class ProductWebsiteLinkRepository implements \Magento\Catalog\Api\ProductWebsiteLinkRepositoryInterface
 {
     /**

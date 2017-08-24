@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Api\Search;
@@ -10,6 +10,10 @@ use Magento\Framework\Api\SearchCriteriaInterface as BaseSearchCriteriaInterface
 use Magento\Framework\Api\Search\SearchCriteriaInterface;
 use Magento\Framework\Api\Search\SearchResultInterface;
 
+/**
+ * Class \Magento\Framework\Api\Search\SearchResult
+ *
+ */
 class SearchResult extends AbstractSimpleObject implements SearchResultInterface
 {
     /**
@@ -84,19 +88,5 @@ class SearchResult extends AbstractSimpleObject implements SearchResultInterface
     public function setTotalCount($totalCount)
     {
         return $this->setData(self::TOTAL_COUNT, $totalCount);
-    }
-
-    /**
-     * Retrieve ids of all items
-     *
-     * @return array
-     */
-    public function getAllIds()
-    {
-        $ids = [];
-        foreach ($this->getItems() as $item) {
-            $ids[] = $item->getId();
-        }
-        return $ids;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Multishipping\Controller\Checkout;
@@ -9,6 +9,10 @@ namespace Magento\Multishipping\Controller\Checkout;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
 use Magento\Framework\App\ResponseInterface;
 
+/**
+ * Class \Magento\Multishipping\Controller\Checkout\Billing
+ *
+ */
 class Billing extends \Magento\Multishipping\Controller\Checkout
 {
     /**

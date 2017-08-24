@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -9,6 +9,10 @@
  */
 namespace Magento\Theme\Model\Theme\Domain;
 
+/**
+ * Class \Magento\Theme\Model\Theme\Domain\Physical
+ *
+ */
 class Physical implements \Magento\Framework\View\Design\Theme\Domain\PhysicalInterface
 {
     /**

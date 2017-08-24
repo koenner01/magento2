@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -11,6 +11,10 @@
  */
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes;
 
+/**
+ * Class \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes\Search
+ *
+ */
 class Search extends \Magento\Backend\Block\Widget
 {
     /**

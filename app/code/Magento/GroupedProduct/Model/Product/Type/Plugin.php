@@ -1,13 +1,17 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\GroupedProduct\Model\Product\Type;
 
 use Magento\Framework\Module\Manager;
 
+/**
+ * Class \Magento\GroupedProduct\Model\Product\Type\Plugin
+ *
+ */
 class Plugin
 {
     /**

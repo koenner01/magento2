@@ -2,13 +2,17 @@
 /**
  * Adminhtml AdminNotification Severity Renderer
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\AdminNotification\Block\Grid\Renderer;
 
 use Magento\Framework\Notification\MessageInterface;
 
+/**
+ * Class \Magento\AdminNotification\Block\Grid\Renderer\Severity
+ *
+ */
 class Severity extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
 {
     /**

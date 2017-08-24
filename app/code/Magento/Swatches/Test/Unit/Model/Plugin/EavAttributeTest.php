@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -9,7 +9,7 @@ namespace Magento\Swatches\Test\Unit\Model\Plugin;
 use Magento\Swatches\Model\Plugin\EavAttribute;
 use Magento\Swatches\Model\Swatch;
 
-class EavAttributeTest extends \PHPUnit_Framework_TestCase
+class EavAttributeTest extends \PHPUnit\Framework\TestCase
 {
     const ATTRIBUTE_ID = 123;
     const OPTION_ID = 'option 12';
@@ -56,29 +56,20 @@ class EavAttributeTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->attribute = $this->getMock(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class, [], [], '', false);
-        $this->swatchFactory = $this->getMock(\Magento\Swatches\Model\SwatchFactory::class, ['create'], [], '', false);
-        $this->swatchHelper = $this->getMock(\Magento\Swatches\Helper\Data::class, [], [], '', false);
-        $this->swatch = $this->getMock(\Magento\Swatches\Model\Swatch::class, [], [], '', false);
-        $this->resource = $this->getMock(\Magento\Swatches\Model\ResourceModel\Swatch::class, [], [], '', false);
+        $this->attribute = $this->createMock(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
+        $this->swatchFactory = $this->createPartialMock(\Magento\Swatches\Model\SwatchFactory::class, ['create']);
+        $this->swatchHelper = $this->createMock(\Magento\Swatches\Helper\Data::class);
+        $this->swatch = $this->createMock(\Magento\Swatches\Model\Swatch::class);
+        $this->resource = $this->createMock(\Magento\Swatches\Model\ResourceModel\Swatch::class);
         $this->collection =
-            $this->getMock(\Magento\Swatches\Model\ResourceModel\Swatch\Collection::class, [], [], '', false);
-        $this->collectionFactory = $this->getMock(
+            $this->createMock(\Magento\Swatches\Model\ResourceModel\Swatch\Collection::class);
+        $this->collectionFactory = $this->createPartialMock(
             \Magento\Swatches\Model\ResourceModel\Swatch\CollectionFactory::class,
-            ['create'],
-            [],
-            '',
-            false
+            ['create']
         );
-        $this->abstractSource = $this->getMock(
-            \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource::class,
-            [],
-            [],
-            '',
-            false
-        );
+        $this->abstractSource = $this->createMock(\Magento\Eav\Model\Entity\Attribute\Source\AbstractSource::class);
 
-        $serializer = $this->getMock(
+        $serializer = $this->createPartialMock(
             \Magento\Framework\Serialize\Serializer\Json::class,
             ['serialize', 'unserialize']
         );
@@ -150,7 +141,7 @@ class EavAttributeTest extends \PHPUnit_Framework_TestCase
             ->willReturn(true);
         $this->swatchHelper->expects($this->never())->method('isTextSwatch');
 
-        $this->eavAttribute->beforeSave($this->attribute);
+        $this->eavAttribute->beforeBeforeSave($this->attribute);
     }
 
     public function testBeforeSaveTextSwatch()
@@ -195,7 +186,7 @@ class EavAttributeTest extends \PHPUnit_Framework_TestCase
             ->with($this->attribute)
             ->willReturn(true);
 
-        $this->eavAttribute->beforeSave($this->attribute);
+        $this->eavAttribute->beforeBeforeSave($this->attribute);
     }
 
     /**
@@ -236,11 +227,11 @@ class EavAttributeTest extends \PHPUnit_Framework_TestCase
                 )
             );
 
-        $this->eavAttribute->beforeSave($this->attribute);
+        $this->eavAttribute->beforeBeforeSave($this->attribute);
     }
 
     /**
-     * @covers \Magento\Swatches\Model\Plugin\EavAttribute::beforeSave()
+     * @covers \Magento\Swatches\Model\Plugin\EavAttribute::beforeBeforeSave()
      */
     public function testBeforeSaveWithDeletedOption()
     {
@@ -278,7 +269,7 @@ class EavAttributeTest extends \PHPUnit_Framework_TestCase
                     false
                 )
             );
-        $this->eavAttribute->beforeSave($this->attribute);
+        $this->eavAttribute->beforeBeforeSave($this->attribute);
     }
 
     public function testBeforeSaveNotSwatch()
@@ -316,7 +307,7 @@ class EavAttributeTest extends \PHPUnit_Framework_TestCase
             ->with($this->attribute)
             ->willReturn(false);
 
-        $this->eavAttribute->beforeSave($this->attribute);
+        $this->eavAttribute->beforeBeforeSave($this->attribute);
     }
 
     public function visualSwatchProvider()

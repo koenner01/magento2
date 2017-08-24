@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Bundle\Block\Catalog\Product\View\Type;
@@ -11,7 +11,9 @@ use Magento\Catalog\Model\Product;
 /**
  * Catalog bundle product info block
  *
+ * @api
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @api
  */
 class Bundle extends \Magento\Catalog\Block\Product\View\AbstractView
 {
@@ -83,7 +85,7 @@ class Bundle extends \Magento\Catalog\Block\Product\View\AbstractView
     }
 
     /**
-     * @deprecated
+     * @deprecated 100.2.0
      * @return \Magento\CatalogRule\Model\ResourceModel\Product\CollectionProcessor
      */
     private function getCatalogRuleProcessor()

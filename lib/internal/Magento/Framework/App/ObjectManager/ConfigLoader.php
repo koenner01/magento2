@@ -2,15 +2,19 @@
 /**
  * ObjectManager configuration loader
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\App\ObjectManager;
 
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\Serialize\Serializer\Serialize;
 use Magento\Framework\ObjectManager\ConfigLoaderInterface;
+use Magento\Framework\Serialize\Serializer\Serialize;
+use Magento\Framework\Serialize\SerializerInterface;
 
+/**
+ * Class \Magento\Framework\App\ObjectManager\ConfigLoader
+ *
+ */
 class ConfigLoader implements ConfigLoaderInterface
 {
     /**
@@ -30,7 +34,7 @@ class ConfigLoader implements ConfigLoaderInterface
     /**
      * Cache
      *
-     * @var \Magento\Framework\Cache\FrontendInterface
+     * @var \Magento\Framework\Config\CacheInterface
      */
     protected $_cache;
 
@@ -86,7 +90,7 @@ class ConfigLoader implements ConfigLoaderInterface
      * Get serializer
      *
      * @return SerializerInterface
-     * @deprecated
+     * @deprecated 100.2.0
      */
     private function getSerializer()
     {

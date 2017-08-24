@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Bundle\Block\Adminhtml\Sales\Order\View\Items;
@@ -10,6 +10,8 @@ use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * Adminhtml sales order item renderer
+ *
+ * @api
  */
 class Renderer extends \Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer
 {
@@ -29,6 +31,7 @@ class Renderer extends \Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\
      * @param \Magento\Checkout\Helper\Data $checkoutHelper
      * @param array $data
      * @param \Magento\Framework\Serialize\Serializer\Json $serializer
+     * @since 100.2.0
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,

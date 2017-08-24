@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -9,6 +9,10 @@ namespace Magento\CatalogRuleConfigurable\Plugin\ConfigurableProduct\Model\Resou
 
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\Collection;
 
+/**
+ * Class \Magento\CatalogRuleConfigurable\Plugin\ConfigurableProduct\Model\ResourceModel\AddCatalogRulePrice
+ *
+ */
 class AddCatalogRulePrice
 {
     /**

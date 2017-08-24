@@ -1,10 +1,14 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Captcha\Model\Checkout;
 
+/**
+ * Class \Magento\Captcha\Model\Checkout\ConfigProvider
+ *
+ */
 class ConfigProvider implements \Magento\Checkout\Model\ConfigProviderInterface
 {
     /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Authorization\Model\Acl\Loader;
@@ -8,6 +8,10 @@ namespace Magento\Authorization\Model\Acl\Loader;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Serialize\Serializer\Json;
 
+/**
+ * Class \Magento\Authorization\Model\Acl\Loader\Rule
+ *
+ */
 class Rule implements \Magento\Framework\Acl\LoaderInterface
 {
     /**

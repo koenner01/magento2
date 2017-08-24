@@ -1,13 +1,17 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Paypal\Controller\Adminhtml\Billing\Agreement;
 
 use Magento\Customer\Controller\RegistryConstants;
 
+/**
+ * Class \Magento\Paypal\Controller\Adminhtml\Billing\Agreement\CustomerGrid
+ *
+ */
 class CustomerGrid extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement
 {
     /**

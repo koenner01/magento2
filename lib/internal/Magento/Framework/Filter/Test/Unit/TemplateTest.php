@@ -1,12 +1,12 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
 namespace Magento\Framework\Filter\Test\Unit;
 
-class TemplateTest extends \PHPUnit_Framework_TestCase
+class TemplateTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Magento\Framework\Filter\Template
@@ -43,7 +43,7 @@ class TemplateTest extends \PHPUnit_Framework_TestCase
 {{depend street4}}{{var street4}}{{/depend}}
 {{if city}}{{var city}},  {{/if}}{{if region}}{{var region}}, {{/if}}{{if postcode}}{{var postcode}}{{/if}}
 {{var country}}
-T: {{var telephone}}
+{{depend telephone}}T: {{var telephone}}{{/depend}}
 {{depend fax}}F: {{var fax}}{{/depend}}
 {{depend vat_id}}VAT: {{var vat_id}}{{/depend}}
 TEMPLATE;
@@ -149,9 +149,7 @@ EXPECTED_RESULT;
 
         $stub->expects($this->once())
             ->method('bar')
-            ->will($this->returnCallback(function ($arg) {
-                return serialize($arg);
-            }));
+            ->willReturn('Mocked Method Return');
 
         return [
             'no variables' => [
@@ -177,15 +175,183 @@ EXPECTED_RESULT;
                     'b' => 'bee',
                     'd' => 'dee',
                 ],
-                serialize([
-                    'param_1' => 'value_1',
-                    'param_2' => 'lorem',
-                    'param_3' => [
-                        'a' => 'bee',
-                        'c' => 'dee',
-                    ],
-                ]),
+                'Mocked Method Return'
             ],
         ];
+    }
+
+    /**
+     * @covers \Magento\Framework\Filter\Template::filterFor
+     * @dataProvider loopPatternDataProvider
+     */
+    public function testLoopPattern($construction, $variables, $expectedResult)
+    {
+        $this->templateFilter->setVariables($variables);
+        $this->assertEquals($expectedResult, $this->invokeMethod($this->templateFilter, 'filterFor', [$construction]));
+    }
+
+    /**
+     * @return array
+     */
+    public function loopPatternDataProvider()
+    {
+        return [
+            'no loop tag' => $this->getTemplateAndExpectedResults('noLoopTag'),
+            'no loop body tag' => $this->getTemplateAndExpectedResults('noBodyTag'),
+            'no item tag' =>  $this->getTemplateAndExpectedResults('noItemTag'),
+            'no item, no body tags' => $this->getTemplateAndExpectedResults('noItemNoBodyTag'),
+            'no item, no data, no body tags' => $this->getTemplateAndExpectedResults('noItemNoDataNoBodyTag'),
+        ];
+    }
+
+    /**
+     * Call protected/private method of a class.
+     *
+     * @param object &$object
+     * @param string $methodName
+     * @param array  $parameters
+     *
+     * @return mixed Method return.
+     */
+    private function invokeMethod(&$object, $methodName, array $parameters = [])
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
+    }
+
+    /**
+     * @param $type
+     * @return array
+     */
+    public function getTemplateAndExpectedResults($type)
+    {
+        switch ($type) {
+            case 'noLoopTag':
+                $template = $expected = '';
+                break;
+            case 'noBodyTag':
+                $template = <<<TEMPLATE
+<ul>
+{{for item in order.all_visible_items}}{{/for}}
+</ul>
+TEMPLATE;
+                $expected = <<<TEMPLATE
+<ul>
+{{for item in order.all_visible_items}}{{/for}}
+</ul>
+TEMPLATE;
+                break;
+            case 'noItemTag':
+                $template = <<<TEMPLATE
+<ul>
+{{for in order.all_visible_items}}
+    <li>
+        {{var loop.index}} name: {{var thing.name}}, lastname: {{var thing.lastname}}, age: {{var thing.age}}
+    </li>
+{{/for}}
+</ul>
+TEMPLATE;
+                $expected = <<<TEMPLATE
+<ul>
+{{for in order.all_visible_items}}
+    <li>
+        {{var loop.index}} name: {{var thing.name}}, lastname: {{var thing.lastname}}, age: {{var thing.age}}
+    </li>
+{{/for}}
+</ul>
+TEMPLATE;
+                break;
+            case 'noItemNoBodyTag':
+                $template = <<<TEMPLATE
+<ul>
+{{for in order.all_visible_items}}
+    
+{{/for}}
+</ul>
+TEMPLATE;
+                $expected = <<<TEMPLATE
+<ul>
+{{for in order.all_visible_items}}
+    
+{{/for}}
+</ul>
+TEMPLATE;
+                break;
+            case 'noItemNoDataNoBodyTag':
+                $template = <<<TEMPLATE
+<ul>
+{{for in }}
+    
+{{/for}}
+</ul>
+TEMPLATE;
+                $expected = <<<TEMPLATE
+<ul>
+{{for in }}
+    
+{{/for}}
+</ul>
+TEMPLATE;
+                break;
+            default:
+                $template = <<<TEMPLATE
+<ul>
+    {{for item in order.all_visible_items}}
+    <li>
+        index: {{var loop.index}} sku: {{var item.sku}}
+        name: {{var item.name}} price: {{var item.price}} quantity: {{var item.ordered_qty}}
+    </li>
+    {{/for}}
+</ul>
+TEMPLATE;
+                $expected = <<<TEMPLATE
+<ul>
+    
+    <li>
+        index: 0 sku: ABC123
+        name: Product ABC price: 123 quantity: 2
+    </li>
+    
+    <li>
+        index: 1 sku: DOREMI
+        name: Product DOREMI price: 456 quantity: 1
+    </li>
+    
+</ul>
+TEMPLATE;
+        }
+        return [$template, ['order' => $this->getObjectData()], $expected];
+    }
+
+    /**
+     * @return object
+     */
+    private function getObjectData()
+    {
+        $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
+        $dataObject = $objectManager->getObject(\Magento\Framework\DataObject::class);
+
+        /* $var @dataObject \Magento\Framework\DataObject */
+
+        $visibleItems = [
+            [
+                'sku' => 'ABC123',
+                'name' => 'Product ABC',
+                'price' => '123',
+                'ordered_qty' => '2'
+            ],
+            [
+                'sku' => 'DOREMI',
+                'name' => 'Product DOREMI',
+                'price' => '456',
+                'ordered_qty' => '1'
+            ]
+        ];
+
+        $dataObject->setAllVisibleItems($visibleItems);
+        return $dataObject;
     }
 }

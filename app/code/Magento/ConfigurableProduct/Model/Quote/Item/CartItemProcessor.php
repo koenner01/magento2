@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\ConfigurableProduct\Model\Quote\Item;
@@ -10,6 +10,10 @@ use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\App\ObjectManager;
 
+/**
+ * Class \Magento\ConfigurableProduct\Model\Quote\Item\CartItemProcessor
+ *
+ */
 class CartItemProcessor implements CartItemProcessorInterface
 {
     /**

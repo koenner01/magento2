@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Review\Controller\Product;
@@ -10,6 +10,10 @@ use Magento\Review\Model\Review;
 use Magento\Catalog\Model\Product as CatalogProduct;
 use Magento\Framework\Controller\ResultFactory;
 
+/**
+ * Class \Magento\Review\Controller\Product\ListAction
+ *
+ */
 class ListAction extends ProductController
 {
     /**

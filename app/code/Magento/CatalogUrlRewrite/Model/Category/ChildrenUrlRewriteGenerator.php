@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogUrlRewrite\Model\Category;
@@ -11,15 +11,25 @@ use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
 use Magento\UrlRewrite\Model\MergeDataProviderFactory;
 use Magento\Framework\App\ObjectManager;
 
+/**
+ * Class \Magento\CatalogUrlRewrite\Model\Category\ChildrenUrlRewriteGenerator
+ *
+ */
 class ChildrenUrlRewriteGenerator
 {
-    /** @var \Magento\CatalogUrlRewrite\Model\Category\ChildrenCategoriesProvider */
+    /**
+     * @var \Magento\CatalogUrlRewrite\Model\Category\ChildrenCategoriesProvider
+     */
     protected $childrenCategoriesProvider;
 
-    /** @var \Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGeneratorFactory */
+    /**
+     * @var \Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGeneratorFactory
+     */
     protected $categoryUrlRewriteGeneratorFactory;
 
-    /** @var \Magento\UrlRewrite\Model\MergeDataProvider */
+    /**
+     * @var \Magento\UrlRewrite\Model\MergeDataProvider
+     */
     private $mergeDataProviderPrototype;
 
     /**

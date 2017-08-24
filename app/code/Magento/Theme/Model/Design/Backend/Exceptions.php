@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Theme\Model\Design\Backend;
@@ -8,6 +8,10 @@ namespace Magento\Theme\Model\Design\Backend;
 use Magento\Config\Model\Config\Backend\Serialized\ArraySerialized;
 use Magento\Framework\Serialize\Serializer\Json;
 
+/**
+ * Class \Magento\Theme\Model\Design\Backend\Exceptions
+ *
+ */
 class Exceptions extends ArraySerialized
 {
     /**

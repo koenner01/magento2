@@ -2,12 +2,16 @@
 /**
  * @category    Magento
  * @package     Magento_CatalogInventory
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
 namespace Magento\CatalogInventory\Model\Indexer\Stock;
 
+/**
+ * Class \Magento\CatalogInventory\Model\Indexer\Stock\Processor
+ *
+ */
 class Processor extends \Magento\Framework\Indexer\AbstractProcessor
 {
     /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Sales\Model\AdminOrder;
@@ -12,8 +12,9 @@ use Magento\Framework\Registry;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @magentoAppArea adminhtml
+ * @magentoAppIsolation enabled
  */
-class CreateTest extends \PHPUnit_Framework_TestCase
+class CreateTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Magento\Sales\Model\AdminOrder\Create
@@ -93,6 +94,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $rate->setCode('freeshipping_freeshipping');
 
         $this->_model->getQuote()->getShippingAddress()->addShippingRate($rate);
+        $this->_model->getQuote()->getShippingAddress()->setCountryId('EE');
         $this->_model->setShippingAsBilling(0);
         $this->_model->setPaymentData(['method' => 'checkmo']);
 
@@ -461,6 +463,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         );
         $order = $this->_model->createOrder();
         $this->_verifyCreatedOrder($order, $shippingMethod);
+        $this->getCustomerRegistry()->remove($order->getCustomerId());
         $customer = $this->getCustomerById($order->getCustomerId());
         $address = $this->getAddressById($customer->getDefaultShipping());
         $this->assertEquals(
@@ -763,5 +766,14 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     {
         /** @var \Magento\Customer\Api\AddressRepositoryInterface $addressRepository */
         return Bootstrap::getObjectManager()->create(\Magento\Customer\Api\AddressRepositoryInterface::class);
+    }
+
+    /**
+     * @return \Magento\Customer\Model\CustomerRegistry
+     */
+    private function getCustomerRegistry()
+    {
+        /** @var \Magento\Customer\Model\CustomerRegistry $addressRepository */
+        return Bootstrap::getObjectManager()->get(\Magento\Customer\Model\CustomerRegistry::class);
     }
 }

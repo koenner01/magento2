@@ -4,7 +4,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Data\Helper;
@@ -12,6 +12,10 @@ namespace Magento\Framework\Data\Helper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Url\Helper\Data as UrlHelper;
 
+/**
+ * Class \Magento\Framework\Data\Helper\PostHelper
+ *
+ */
 class PostHelper extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**

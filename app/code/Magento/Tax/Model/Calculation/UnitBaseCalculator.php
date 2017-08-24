@@ -1,12 +1,16 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Tax\Model\Calculation;
 
 use Magento\Tax\Api\Data\QuoteDetailsItemInterface;
 
+/**
+ * Class \Magento\Tax\Model\Calculation\UnitBaseCalculator
+ *
+ */
 class UnitBaseCalculator extends AbstractCalculator
 {
     /**

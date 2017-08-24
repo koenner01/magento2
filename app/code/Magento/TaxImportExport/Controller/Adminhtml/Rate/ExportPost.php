@@ -1,13 +1,17 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\TaxImportExport\Controller\Adminhtml\Rate;
 
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
 
+/**
+ * Class \Magento\TaxImportExport\Controller\Adminhtml\Rate\ExportPost
+ *
+ */
 class ExportPost extends \Magento\TaxImportExport\Controller\Adminhtml\Rate
 {
     /**
@@ -94,6 +98,5 @@ class ExportPost extends \Magento\TaxImportExport\Controller\Adminhtml\Rate
         ) || $this->_authorization->isAllowed(
             'Magento_TaxImportExport::import_export'
         );
-
     }
 }

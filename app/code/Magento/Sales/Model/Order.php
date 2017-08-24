@@ -1,13 +1,14 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Sales\Model;
 
 use Magento\Directory\Model\Currency;
 use Magento\Framework\Api\AttributeValueFactory;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderStatusHistoryInterface;
@@ -31,8 +32,7 @@ use Magento\Sales\Model\ResourceModel\Order\Status\History\Collection as History
  *  sales_order_delete_before
  *  sales_order_delete_after
  *
- * @method \Magento\Sales\Model\ResourceModel\Order _getResource()
- * @method \Magento\Sales\Model\ResourceModel\Order getResource()
+ * @api
  * @method int getGiftMessageId()
  * @method \Magento\Sales\Model\Order setGiftMessageId(int $value)
  * @method bool hasBillingAddressId()
@@ -184,7 +184,7 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
 
     /**
      * @var \Magento\Catalog\Api\ProductRepositoryInterface
-     * @deprecated Remove unused dependency.
+     * @deprecated 100.2.0 Remove unused dependency.
      */
     protected $productRepository;
 
@@ -212,6 +212,11 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
      * @var \Magento\Directory\Model\CurrencyFactory
      */
     protected $_currencyFactory;
+
+    /**
+     * @var \Magento\Eav\Model\Config
+     */
+    private $_eavConfig;
 
     /**
      * @var \Magento\Sales\Model\Order\Status\HistoryFactory
@@ -269,6 +274,11 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
     protected $timezone;
 
     /**
+     * @var ResolverInterface
+     */
+    private $localeResolver;
+
+    /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory
@@ -296,6 +306,7 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
+     * @param ResolverInterface $localeResolver
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
@@ -325,7 +336,8 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productListFactory,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-        array $data = []
+        array $data = [],
+        ResolverInterface $localeResolver = null
     ) {
         $this->_storeManager = $storeManager;
         $this->_orderConfig = $orderConfig;
@@ -347,6 +359,8 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
         $this->_trackCollectionFactory = $trackCollectionFactory;
         $this->salesOrderCollectionFactory = $salesOrderCollectionFactory;
         $this->priceCurrency = $priceCurrency;
+        $this->localeResolver = $localeResolver ?: ObjectManager::getInstance()->get(ResolverInterface::class);
+
         parent::__construct(
             $context,
             $registry,
@@ -618,7 +632,12 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
          * for this we have additional diapason for 0
          * TotalPaid - contains amount, that were not rounded.
          */
-        if (abs($this->priceCurrency->round($this->getTotalPaid()) - $this->getTotalRefunded()) < .0001) {
+        $totalRefunded = $this->priceCurrency->round($this->getTotalPaid()) - $this->getTotalRefunded();
+        if (abs($totalRefunded) < .0001) {
+            return false;
+        }
+        // Case when Adjustment Fee (adjustment_negative) has been used for first creditmemo
+        if (abs($totalRefunded - $this->getAdjustmentNegative()) < .0001) {
             return false;
         }
 
@@ -1127,7 +1146,7 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
             $state = self::STATE_CANCELED;
             foreach ($this->getAllItems() as $item) {
                 if ($state != self::STATE_PROCESSING && $item->getQtyToRefund()) {
-                    if ($item->getQtyToShip() > $item->getQtyToCancel()) {
+                    if ($item->isProcessingAvailable()) {
                         $state = self::STATE_PROCESSING;
                     } else {
                         $state = self::STATE_COMPLETE;
@@ -1826,7 +1845,7 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
             new \DateTime($this->getCreatedAt()),
             $format,
             $format,
-            null,
+            $this->localeResolver->getDefaultLocale(),
             $this->timezone->getConfigTimezone('store', $this->getStore())
         );
     }
@@ -4343,5 +4362,6 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
     {
         return $this->setData('shipping_method', $shippingMethod);
     }
+
     //@codeCoverageIgnoreEnd
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Developer\Test\Unit\Model\Logger\Handler;
@@ -19,7 +19,7 @@ use Magento\Framework\App\DeploymentConfig;
  * Class DebugTest
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class DebugTest extends \PHPUnit_Framework_TestCase
+class DebugTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Debug

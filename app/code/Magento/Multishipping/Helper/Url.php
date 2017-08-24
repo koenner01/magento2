@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -11,6 +11,10 @@
  */
 namespace Magento\Multishipping\Helper;
 
+/**
+ * Class \Magento\Multishipping\Helper\Url
+ *
+ */
 class Url extends \Magento\Framework\Url\Helper\Data
 {
     /**

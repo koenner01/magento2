@@ -1,12 +1,16 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\GiftMessage\Block\Cart\Item\Renderer\Actions;
 
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 
+/**
+ * Class \Magento\GiftMessage\Block\Cart\Item\Renderer\Actions\ItemIdProcessor
+ *
+ */
 class ItemIdProcessor implements LayoutProcessorInterface
 {
     /**

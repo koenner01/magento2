@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Cms\Controller\Adminhtml\Page;
@@ -9,6 +9,10 @@ namespace Magento\Cms\Controller\Adminhtml\Page;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class \Magento\Cms\Controller\Adminhtml\Page\Index
+ *
+ */
 class Index extends \Magento\Backend\App\Action
 {
     /**

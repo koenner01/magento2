@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogImportExport\Model\Import\Product\Type;
@@ -12,6 +12,8 @@ use Magento\Framework\EntityManager\MetadataPool;
 
 /**
  * Import entity abstract product type model
+ *
+ * @api
  *
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -132,6 +134,7 @@ abstract class AbstractType
      * Product metadata pool
      *
      * @var \Magento\Framework\EntityManager\MetadataPool
+     * @since 100.1.0
      */
     protected $metadataPool;
 
@@ -551,6 +554,7 @@ abstract class AbstractType
      * Get product metadata pool
      *
      * @return \Magento\Framework\EntityManager\MetadataPool
+     * @since 100.1.0
      */
     protected function getMetadataPool()
     {
@@ -565,6 +569,7 @@ abstract class AbstractType
      * Get product entity link field
      *
      * @return string
+     * @since 100.1.0
      */
     protected function getProductEntityLinkField()
     {
@@ -578,6 +583,7 @@ abstract class AbstractType
 
     /**
      * Clean cached values
+     * @since 100.2.0
      */
     public function __destruct()
     {

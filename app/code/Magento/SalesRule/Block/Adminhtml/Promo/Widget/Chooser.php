@@ -1,10 +1,14 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\SalesRule\Block\Adminhtml\Promo\Widget;
 
+/**
+ * Class \Magento\SalesRule\Block\Adminhtml\Promo\Widget\Chooser
+ *
+ */
 class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**

@@ -1,12 +1,16 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Filesystem\Directory;
 
 use Magento\Framework\Exception\FileSystemException;
 
+/**
+ * Class \Magento\Framework\Filesystem\Directory\Write
+ *
+ */
 class Write extends Read implements WriteInterface
 {
     /**

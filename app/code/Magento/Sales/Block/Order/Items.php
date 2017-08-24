@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -11,6 +11,9 @@
  */
 namespace Magento\Sales\Block\Order;
 
+/**
+ * @api
+ */
 class Items extends \Magento\Sales\Block\Items\AbstractItems
 {
     /**
@@ -59,6 +62,7 @@ class Items extends \Magento\Sales\Block\Items\AbstractItems
      * Init pager block and item collection with page size and current page number
      *
      * @return $this
+     * @since 100.2.0
      */
     protected function _prepareLayout()
     {
@@ -86,6 +90,7 @@ class Items extends \Magento\Sales\Block\Items\AbstractItems
      * To be called from templates(after _prepareLayout())
      *
      * @return bool
+     * @since 100.2.0
      */
     public function isPagerDisplayed()
     {
@@ -98,6 +103,7 @@ class Items extends \Magento\Sales\Block\Items\AbstractItems
      * To be called from templates(after _prepareLayout())
      *
      * @return \Magento\Framework\DataObject[]
+     * @since 100.2.0
      */
     public function getItems()
     {
@@ -109,6 +115,7 @@ class Items extends \Magento\Sales\Block\Items\AbstractItems
      * To be called from templates(after _prepareLayout())
      *
      * @return string HTML output
+     * @since 100.2.0
      */
     public function getPagerHtml()
     {

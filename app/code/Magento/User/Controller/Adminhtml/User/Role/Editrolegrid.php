@@ -1,13 +1,17 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\User\Controller\Adminhtml\User\Role;
 
 use Magento\Framework\Controller\ResultFactory;
 
+/**
+ * Class \Magento\User\Controller\Adminhtml\User\Role\Editrolegrid
+ *
+ */
 class Editrolegrid extends \Magento\User\Controller\Adminhtml\User\Role
 {
     /**

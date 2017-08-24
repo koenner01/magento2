@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Captcha\Model\Customer\Plugin;
@@ -9,6 +9,10 @@ use Magento\Captcha\Helper\Data as CaptchaHelper;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 
+/**
+ * Class \Magento\Captcha\Model\Customer\Plugin\AjaxLogin
+ *
+ */
 class AjaxLogin
 {
     /**

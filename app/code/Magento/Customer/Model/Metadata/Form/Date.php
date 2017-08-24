@@ -2,13 +2,17 @@
 /**
  * Form Element Date Data Model
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Customer\Model\Metadata\Form;
 
 use Magento\Framework\Api\ArrayObjectSearch;
 
+/**
+ * Class \Magento\Customer\Model\Metadata\Form\Date
+ *
+ */
 class Date extends AbstractData
 {
     /**

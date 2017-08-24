@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Weee\Model\Total\Invoice;
@@ -9,6 +9,10 @@ use Magento\Weee\Helper\Data as WeeeHelper;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\App\ObjectManager;
 
+/**
+ * Class \Magento\Weee\Model\Total\Invoice\Weee
+ *
+ */
 class Weee extends \Magento\Sales\Model\Order\Invoice\Total\AbstractTotal
 {
     /**

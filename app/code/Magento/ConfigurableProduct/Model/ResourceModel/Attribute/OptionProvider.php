@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Attribute;
@@ -8,6 +8,10 @@ namespace Magento\ConfigurableProduct\Model\ResourceModel\Attribute;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Catalog\Api\Data\ProductInterface;
 
+/**
+ * Class \Magento\ConfigurableProduct\Model\ResourceModel\Attribute\OptionProvider
+ *
+ */
 class OptionProvider
 {
     /**

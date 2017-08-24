@@ -1,13 +1,17 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Tax\Controller\Adminhtml\Rate;
 
 use Magento\Tax\Controller\RegistryConstants;
 
+/**
+ * Class \Magento\Tax\Controller\Adminhtml\Rate\Add
+ *
+ */
 class Add extends \Magento\Tax\Controller\Adminhtml\Rate
 {
     /**

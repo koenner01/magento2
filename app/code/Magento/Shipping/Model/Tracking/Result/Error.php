@@ -1,10 +1,14 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Shipping\Model\Tracking\Result;
 
+/**
+ * Class \Magento\Shipping\Model\Tracking\Result\Error
+ *
+ */
 class Error extends \Magento\Shipping\Model\Tracking\Result\AbstractResult
 {
     /**

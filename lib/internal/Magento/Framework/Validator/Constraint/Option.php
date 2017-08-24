@@ -2,11 +2,15 @@
 /**
  * Constraint option
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Validator\Constraint;
 
+/**
+ * Class \Magento\Framework\Validator\Constraint\Option
+ *
+ */
 class Option implements \Magento\Framework\Validator\Constraint\OptionInterface
 {
     /**

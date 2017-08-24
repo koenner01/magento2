@@ -2,11 +2,15 @@
 /**
  * Page layout Config Converter
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Theme\Model\Layout\Config;
 
+/**
+ * Class \Magento\Theme\Model\Layout\Config\Converter
+ *
+ */
 class Converter implements \Magento\Framework\Config\ConverterInterface
 {
     /**

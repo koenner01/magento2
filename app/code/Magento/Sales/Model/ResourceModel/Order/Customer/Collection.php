@@ -2,11 +2,15 @@
 /**
  * Customer Grid Collection
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Sales\Model\ResourceModel\Order\Customer;
 
+/**
+ * Class \Magento\Sales\Model\ResourceModel\Order\Customer\Collection
+ *
+ */
 class Collection extends \Magento\Customer\Model\ResourceModel\Customer\Collection
 {
     /**

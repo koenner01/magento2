@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -12,6 +12,10 @@ namespace Magento\Paypal\Block\Express\Review;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Quote\Model\Quote;
 
+/**
+ * Class \Magento\Paypal\Block\Express\Review\Shipping
+ *
+ */
 class Shipping extends \Magento\Framework\View\Element\Template
 {
     /**

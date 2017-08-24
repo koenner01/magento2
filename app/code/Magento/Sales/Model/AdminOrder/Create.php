@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -14,6 +14,7 @@ use Magento\Quote\Model\Quote\Item;
 
 /**
  * Order create model
+ * @api
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -1116,7 +1117,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      *
-     * @deprecated
+     * @deprecated 100.2.0
      */
     protected function _parseOptions(\Magento\Quote\Model\Quote\Item $item, $additionalOptions)
     {
@@ -1182,7 +1183,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
      * @param array $options
      * @return $this
      *
-     * @deprecated
+     * @deprecated 100.2.0
      */
     protected function _assignOptionsToItem(\Magento\Quote\Model\Quote\Item $item, $options)
     {
@@ -1567,7 +1568,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
         $this->getQuote()->getShippingAddress()->setCollectShippingRates(true);
 
         if (empty($code)) {
-            $this->getQuote()->getShippingAddress()->setFreeShipping(null);
+            $this->getQuote()->getShippingAddress()->setFreeShipping(0);
         }
         $this->getQuote()->setCouponCode($code);
         $this->setRecollect(true);

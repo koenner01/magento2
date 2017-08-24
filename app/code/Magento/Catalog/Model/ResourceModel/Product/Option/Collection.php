@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Catalog\Model\ResourceModel\Product\Option;
@@ -12,6 +12,7 @@ use Magento\Framework\EntityManager\MetadataPool;
 /**
  * Catalog product options collection
  *
+ * @api
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -19,11 +20,13 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 {
     /**
      * @var JoinProcessorInterface
+     * @since 101.0.0
      */
     protected $joinProcessor;
 
     /**
      * @var \Magento\Framework\EntityManager\MetadataPool
+     * @since 101.0.0
      */
     protected $metadataPool;
 
@@ -245,6 +248,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     /**
      * @return void
      * @throws \Exception
+     * @since 101.0.0
      */
     protected function _initSelect()
     {
@@ -264,6 +268,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @param int $storeId
      * @param bool $requiredOnly
      * @return \Magento\Catalog\Api\Data\ProductCustomOptionInterface[]
+     * @since 101.0.0
      */
     public function getProductOptions($productId, $storeId, $requiredOnly = false)
     {

@@ -1,12 +1,16 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Filter\DataObject;
 
 use Magento\Framework\DataObject;
 
+/**
+ * Class \Magento\Framework\Filter\DataObject\Grid
+ *
+ */
 class Grid extends \Magento\Framework\Filter\DataObject
 {
     /**
